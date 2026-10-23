@@ -30,7 +30,40 @@ STEP-8: Repeat the above steps to generate the entire cipher text.
 
 
 ## PROGRAM
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
+int main()
+{
+    char text[100], key[100];
+    int i, j = 0;
+
+    printf("Enter text: ");
+    scanf("%99s", text);
+
+    printf("Enter key: ");
+    scanf("%99s", key);
+
+    for (i = 0; text[i] != '\0'; i++)
+    {
+        text[i] = toupper(text[i]);
+        key[j] = toupper(key[j]);
+
+        text[i] = (text[i] - 'A' +
+                   key[j] - 'A') % 26 + 'A';
+
+        j = (j + 1) % strlen(key);
+    }
+
+    printf("Encrypted text: %s\n", text);
+
+    return 0;
+}
+```
 ## OUTPUT
+<img width="1476" height="700" alt="image" src="https://github.com/user-attachments/assets/9fd02779-75e4-4a1d-9e50-f18696478c93" />
 
 ## RESULT
+Thus, the Vigenère Cipher encryption program was executed successfully, and the plaintext was encrypted using a repeating keyword.
